@@ -5,7 +5,7 @@
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <LangVersion>preview</LangVersion>
     <PackageTags>Assert, Verify</PackageTags>
-    <Description>Adds assertion suppor to Verify (https://github.com/VerifyTests/Verify) support to verify</Description>
+    <Description>Adds assertion support to Verify (https://github.com/VerifyTests/Verify)</Description>
     <NoWarn>CS1591;NU5105</NoWarn>
     <ResolveAssemblyReferencesSilent>true</ResolveAssemblyReferencesSilent>
   </PropertyGroup>
