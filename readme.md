@@ -29,7 +29,7 @@ public static void Init() =>
 ## Usage
 
 
-### Xunit
+### [Xunit](https://xunit.net/)
 
 <!-- snippet: XunitUsage -->
 <a id='snippet-XunitUsage'></a>
@@ -48,7 +48,7 @@ public async Task XunitUsage()
 <!-- endSnippet -->
 
 
-### NUnit
+### [NUnit](https://docs.nunit.org/articles/nunit/writing-tests/assertions/assertions.html)
 
 <!-- snippet: NUnitUsage -->
 <a id='snippet-NUnitUsage'></a>
@@ -67,7 +67,7 @@ public async Task NUnitUsage()
 <!-- endSnippet -->
 
 
-### FluentAssertions
+### [FluentAssertions](https://fluentassertions.com/)
 
 <!-- snippet: FluentAssertionsUsage -->
 <a id='snippet-FluentAssertionsUsage'></a>
@@ -86,7 +86,7 @@ public async Task FluentAssertionsUsage()
 <!-- endSnippet -->
 
 
-### Shouldly
+### [Shouldly](https://github.com/shouldly/shouldly)
 
 <!-- snippet: ShouldlyUsage -->
 <a id='snippet-ShouldlyUsage'></a>
