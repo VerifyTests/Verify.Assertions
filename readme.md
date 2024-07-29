@@ -22,14 +22,7 @@ https://nuget.org/packages/Verify.Assertions/
 public static void Init() =>
     VerifyAssertions.Initialize();
 ```
-<sup><a href='/src/NUnitTests/ModuleInitializer.cs#L3-L9' title='Snippet source file'>snippet source</a> | <a href='#snippet-enable' title='Start of snippet'>anchor</a></sup>
-<a id='snippet-enable-1'></a>
-```cs
-[ModuleInitializer]
-public static void Init() =>
-    VerifyAssertions.Initialize();
-```
-<sup><a href='/src/Tests/ModuleInitializer.cs#L3-L9' title='Snippet source file'>snippet source</a> | <a href='#snippet-enable-1' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/ModuleInitializer.cs#L3-L9' title='Snippet source file'>snippet source</a> | <a href='#snippet-enable' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -105,7 +98,7 @@ public async Task ShouldlyUsage()
     var target = new Target(nested);
     await Verify(target)
         .Assert<Nested>(
-            _ => _.Property.ShouldBe("value2"));
+            _ => _.Property.ShouldBe("value"));
 }
 ```
 <sup><a href='/src/Tests/ShouldyAssertionsTests.cs#L5-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-ShouldlyUsage' title='Start of snippet'>anchor</a></sup>
