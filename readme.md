@@ -28,6 +28,8 @@ public static void Init() =>
 
 ## Usage
 
+Once enable, any assertion library can be used:
+
 
 ### [Xunit](https://xunit.net/)
 
