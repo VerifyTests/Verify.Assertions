@@ -14,6 +14,41 @@
 
     #endregion
 
+    #region Shared
+
+    [ModuleInitializer]
+    public static void AddSharedAssert() =>
+        VerifyAssertions
+            .Assert<SharedNested>(
+                _ => Assert.Equal("value", _.Property));
+
+    [Fact]
+    public async Task SharedAssert()
+    {
+        var nested = new SharedNested(Property: "value");
+        var target = new SharedTarget(nested);
+        await Verify(target);
+    }
+
+    #endregion
+
+    static bool sharedCalled;
+
+    [ModuleInitializer]
+    public static void AddSharedAssertForTest() =>
+        VerifyAssertions
+            .Assert<SharedNested>(
+                _ =>  sharedCalled = true);
+
+    [Fact]
+    public async Task SharedAssertCalled()
+    {
+        var nested = new SharedNested(Property: "value");
+        var target = new SharedTarget(nested);
+        await Verify(target);
+        Assert.True(sharedCalled);
+    }
+
     [Fact]
     public async Task Inherited()
     {

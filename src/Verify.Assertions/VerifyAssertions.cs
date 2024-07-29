@@ -2,6 +2,22 @@
 
 public static class VerifyAssertions
 {
+    static Dictionary<Type, List<Action<object>>> sharedAsserts = [];
+
+    public static void Assert<T>(Action<T> assert)
+    {
+        var type = typeof(T);
+        Action<object> wrapped = _ => assert((T) _);
+        if (sharedAsserts.TryGetValue(type, out var assertsForType))
+        {
+            assertsForType.Add(wrapped);
+        }
+        else
+        {
+            sharedAsserts[type] = [wrapped];
+        }
+    }
+
     public static bool Initialized { get; private set; }
 
     public static void Initialize()
@@ -69,22 +85,28 @@ public static class VerifyAssertions
     static void Serialized(JsonWriter writer, object target)
     {
         var verifyJsonWriter = (VerifyJsonWriter) writer;
-        if (!TryGetAsserts(verifyJsonWriter.Context, out var asserts))
+        var targetType = target.GetType();
+
+        HandleAsserts(sharedAsserts);
+
+        if (TryGetAsserts(verifyJsonWriter.Context, out var asserts))
         {
-            return;
+            HandleAsserts(asserts);
         }
 
-        var targetType = target.GetType();
-        foreach (var (type, actions) in asserts)
+        void HandleAsserts(Dictionary<Type, List<Action<object>>> value)
         {
-            if (!targetType.IsAssignableTo(type))
+            foreach (var (type, actions) in value)
             {
-                continue;
-            }
+                if (!targetType.IsAssignableTo(type))
+                {
+                    continue;
+                }
 
-            foreach (var action in actions)
-            {
-                action(target);
+                foreach (var action in actions)
+                {
+                    action(target);
+                }
             }
         }
     }

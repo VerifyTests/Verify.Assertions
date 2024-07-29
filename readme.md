@@ -30,7 +30,7 @@ public static void Init() =>
 
 Once enable, any assertion library can be used.
 
-The below examples are simplistic for illustrating the usage. In a real world scenario, if data structures being verified are small and simple, then the assertion can happen before or after the the Verify with no need to assert during serialization.
+The below examples are simplistic for illustrating the usage. In a real world scenario, if data structures being verified are small, then the assertion can happen before or after the the Verify with no need to assert during serialization.
 
 
 ### [Xunit](https://xunit.net/)
@@ -106,6 +106,31 @@ public async Task ShouldlyUsage()
 }
 ```
 <sup><a href='/src/Tests/ShouldyAssertionsTests.cs#L5-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-ShouldlyUsage' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+
+## Shared Assertions
+
+Assertions can be added globally.
+
+<!-- snippet: Shared -->
+<a id='snippet-Shared'></a>
+```cs
+[ModuleInitializer]
+public static void AddSharedAssert() =>
+    VerifyAssertions
+        .Assert<SharedNested>(
+            _ => Assert.Equal("value", _.Property));
+
+[Fact]
+public async Task SharedAssert()
+{
+    var nested = new SharedNested(Property: "value");
+    var target = new SharedTarget(nested);
+    await Verify(target);
+}
+```
+<sup><a href='/src/Tests/Tests.cs#L17-L33' title='Snippet source file'>snippet source</a> | <a href='#snippet-Shared' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
