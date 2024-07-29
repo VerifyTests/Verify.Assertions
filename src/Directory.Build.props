@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <Version>0.1.0</Version>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <LangVersion>preview</LangVersion>
+    <PackageTags>Assert, Verify</PackageTags>
+    <Description>Adds assertion suppor to Verify (https://github.com/VerifyTests/Verify) support to verify</Description>
+    <NoWarn>CS1591;NU5105</NoWarn>
+    <ResolveAssemblyReferencesSilent>true</ResolveAssemblyReferencesSilent>
+  </PropertyGroup>
+</Project>
