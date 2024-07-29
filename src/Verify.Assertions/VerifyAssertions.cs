@@ -52,7 +52,9 @@ public static class VerifyAssertions
         return asserts;
     }
 
-    static bool TryGetAsserts(IReadOnlyDictionary<string, object> context, [NotNullWhen(true)] out Dictionary<Type, List<Action<object>>>? value)
+    static bool TryGetAsserts(
+        IReadOnlyDictionary<string, object> context,
+        [NotNullWhen(true)] out Dictionary<Type, List<Action<object>>>? value)
     {
         if (context.TryGetValue("AssertType", out var list))
         {
