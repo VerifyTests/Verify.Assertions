@@ -105,7 +105,7 @@ public async Task ShouldlyUsage()
     var target = new Target(nested);
     await Verify(target)
         .Assert<Nested>(
-            _ => _.Property.ShouldBe("value2"));
+            _ => _.Property.ShouldBe("value"));
 }
 ```
 <sup><a href='/src/Tests/ShouldyAssertionsTests.cs#L5-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-ShouldlyUsage' title='Start of snippet'>anchor</a></sup>
