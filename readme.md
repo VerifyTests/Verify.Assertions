@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/89flq4nfrcmnykd0?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-Assertions)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.Assertions.svg)](https://www.nuget.org/packages/Verify.Assertions/)
 
-Extends [Verify](https://github.com/VerifyTests/Verify) to allow an assertion callback. This enables using assertion libraries to interrogate during serialization.
+Extends [Verify](https://github.com/VerifyTests/Verify) to allow an assertion callback. This enables using assertion libraries to interrogate during serialization. The primary use case for this is when the data structures being verified are either complex or large.
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
@@ -28,7 +28,9 @@ public static void Init() =>
 
 ## Usage
 
-Once enable, any assertion library can be used:
+Once enable, any assertion library can be used.
+
+The below examples are simplistic for illustrating the usage. In a real world scenario, if data structures being verified are small and simple, the the assertion can happen before or after the the Verify with no need to assert during serialization.
 
 
 ### [Xunit](https://xunit.net/)
