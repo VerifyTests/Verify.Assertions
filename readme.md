@@ -30,7 +30,7 @@ public static void Init() =>
 
 Once enable, any assertion library can be used.
 
-The below examples are simplistic for illustrating the usage. In a real world scenario, if data structures being verified are small and simple, the the assertion can happen before or after the the Verify with no need to assert during serialization.
+The below examples are simplistic for illustrating the usage. In a real world scenario, if data structures being verified are small and simple, then the assertion can happen before or after the the Verify with no need to assert during serialization.
 
 
 ### [Xunit](https://xunit.net/)
