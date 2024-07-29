@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/6stx39bhogfbgnpi?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-Assertions)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.Assertions.svg)](https://www.nuget.org/packages/Verify.Assertions/)
 
-Extends [Verify](https://github.com/VerifyTests/Verify) to allow an assertion callback. This enables using assertion libraries to interrogate during serialization. The primary use case for this is when the data structures being verified are either complex or large.
+Extends [Verify](https://github.com/VerifyTests/Verify) to allow an assertion callbacks. This enables using assertion libraries to interrogate during serialization. The primary use case for this is when the data structures being verified are either complex or large.
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
