@@ -30,7 +30,7 @@ public static class VerifyAssertions
         Initialized = true;
 
         InnerVerifier.ThrowIfVerifyHasBeenRun();
-        VerifierSettings.AddExtraSettings(_ => _.Serialized += Serialized);
+        VerifierSettings.AddExtraSettings(_ => _.Serializing += Serializing);
     }
 
     [Pure]
@@ -82,7 +82,7 @@ public static class VerifyAssertions
         return false;
     }
 
-    static void Serialized(JsonWriter writer, object target)
+    static void Serializing(JsonWriter writer, object target)
     {
         var verifyJsonWriter = (VerifyJsonWriter) writer;
         var targetType = target.GetType();

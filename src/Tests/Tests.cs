@@ -70,4 +70,28 @@
             .Assert<Nested>(_ => called = true);
         Assert.True(called);
     }
+
+    [Fact]
+    public async Task WithIgnoreMember()
+    {
+        var nested = new Nested(Property: "value");
+        var target = new Target(nested);
+        var called = false;
+        await Verify(target)
+            .IgnoreMember("Property")
+            .Assert<Nested>(_ => called = true);
+        Assert.True(called);
+    }
+
+    [Fact]
+    public async Task WithScrubMember()
+    {
+        var nested = new Nested(Property: "value");
+        var target = new Target(nested);
+        var called = false;
+        await Verify(target)
+            .ScrubMember("Property")
+            .Assert<Nested>(_ => called = true);
+        Assert.True(called);
+    }
 }
