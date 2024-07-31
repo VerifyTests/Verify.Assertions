@@ -2,21 +2,10 @@
 
 public static class VerifyAssertions
 {
-    static Dictionary<Type, List<Action<object>>> sharedAsserts = [];
+    static List<Action<object>> sharedAsserts = [];
 
-    public static void Assert<T>(Action<T> assert)
-    {
-        var type = typeof(T);
-        Action<object> wrapped = _ => assert((T) _);
-        if (sharedAsserts.TryGetValue(type, out var assertsForType))
-        {
-            assertsForType.Add(wrapped);
-        }
-        else
-        {
-            sharedAsserts[type] = [wrapped];
-        }
-    }
+    public static void Assert<T>(Action<T> assert) =>
+        sharedAsserts.Add(Wrap(assert));
 
     public static bool Initialized { get; private set; }
 
@@ -43,38 +32,35 @@ public static class VerifyAssertions
     public static void Assert<T>(this VerifySettings settings, Action<T> assert)
     {
         var context = settings.Context;
-        var asserts = GetAsserts(context);
-        var type = typeof(T);
-        Action<object> wrapped = _ => assert((T) _);
-        if (asserts.TryGetValue(type, out var assertsForType))
+        if (TryGetAsserts(context, out var asserts))
         {
-            assertsForType.Add(wrapped);
-        }
-        else
-        {
-            asserts[type] = [wrapped];
-        }
-    }
-
-    static Dictionary<Type, List<Action<object>>> GetAsserts(Dictionary<string, object> context)
-    {
-        if (TryGetAsserts(context, out var value))
-        {
-            return value;
+            asserts.Add(Wrap(assert));
+            return;
         }
 
-        Dictionary<Type, List<Action<object>>> asserts = [];
-        context["AssertType"] = asserts;
-        return asserts;
+        context["AssertList"] =
+            new List<Action<object>>
+            {
+                Wrap(assert)
+            };
     }
+
+    static Action<object> Wrap<T>(Action<T> assert) =>
+        _ =>
+        {
+            if (_ is T t)
+            {
+                assert(t);
+            }
+        };
 
     static bool TryGetAsserts(
         IReadOnlyDictionary<string, object> context,
-        [NotNullWhen(true)] out Dictionary<Type, List<Action<object>>>? value)
+        [NotNullWhen(true)] out List<Action<object>>? value)
     {
-        if (context.TryGetValue("AssertType", out var list))
+        if (context.TryGetValue("AssertList", out var list))
         {
-            value = (Dictionary<Type, List<Action<object>>>) list;
+            value = (List<Action<object>>) list;
             return true;
         }
 
@@ -84,30 +70,21 @@ public static class VerifyAssertions
 
     static void Serializing(JsonWriter writer, object target)
     {
-        var verifyJsonWriter = (VerifyJsonWriter) writer;
-        var targetType = target.GetType();
+        var verifyWriter = (VerifyJsonWriter) writer;
 
-        HandleAsserts(sharedAsserts);
+        HandleAsserts(sharedAsserts, target);
 
-        if (TryGetAsserts(verifyJsonWriter.Context, out var asserts))
+        if (TryGetAsserts(verifyWriter.Context, out var asserts))
         {
-            HandleAsserts(asserts);
+            HandleAsserts(asserts, target);
         }
+    }
 
-        void HandleAsserts(Dictionary<Type, List<Action<object>>> value)
+    static void HandleAsserts(List<Action<object>> actions, object target)
+    {
+        foreach (var action in actions)
         {
-            foreach (var (type, actions) in value)
-            {
-                if (!targetType.IsAssignableTo(type))
-                {
-                    continue;
-                }
-
-                foreach (var action in actions)
-                {
-                    action(target);
-                }
-            }
+            action(target);
         }
     }
 }
