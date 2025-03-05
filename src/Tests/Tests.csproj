@@ -3,6 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <NoWarn>xUnit1013</NoWarn>
     <OutputType>Exe</OutputType>
+    <RootNamespace>testing</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FluentAssertions" />
