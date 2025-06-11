@@ -8,9 +8,9 @@ Extends [Verify](https://github.com/VerifyTests/Verify) to allow assertion callb
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
-## NuGet package
+## NuGet
 
-https://nuget.org/packages/Verify.Assertions/
+ * https://nuget.org/packages/Verify.Assertions
 
 
 ## Enable
