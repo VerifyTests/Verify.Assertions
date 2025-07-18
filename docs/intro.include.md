@@ -1,0 +1,1 @@
+Extends [Verify](https://github.com/VerifyTests/Verify) to allow assertion callbacks. This enables using assertion libraries to interrogate during serialization. The primary use case for this is when the data structures being verified are either complex or large.

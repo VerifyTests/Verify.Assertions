@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/6stx39bhogfbgnpi?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-Assertions)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.Assertions.svg)](https://www.nuget.org/packages/Verify.Assertions/)
 
-Extends [Verify](https://github.com/VerifyTests/Verify) to allow assertion callbacks. This enables using assertion libraries to interrogate during serialization. The primary use case for this is when the data structures being verified are either complex or large.
+Extends [Verify](https://github.com/VerifyTests/Verify) to allow assertion callbacks. This enables using assertion libraries to interrogate during serialization. The primary use case for this is when the data structures being verified are either complex or large.<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
@@ -14,9 +14,9 @@ Extends [Verify](https://github.com/VerifyTests/Verify) to allow assertion callb
 
 ### Entity Framework Extensions<!-- include: zzz. path: /docs/zzz.include.md -->
 
-[Entity Framework Extensions](https://entityframework-extensions.net/) is a major sponsor and is proud to contribute to the development this project.
+[Entity Framework Extensions](https://entityframework-extensions.net/?utm_source=simoncropp&utm_medium=Verify.Assertions) is a major sponsor and is proud to contribute to the development this project.
 
-[![Entity Framework Extensions](docs/zzz.png)](https://entityframework-extensions.net)<!-- endInclude -->
+[![Entity Framework Extensions](https://raw.githubusercontent.com/VerifyTests/Verify.Assertions/refs/heads/main/docs/zzz.png)](https://entityframework-extensions.net/?utm_source=simoncropp&utm_medium=Verify.Assertions)<!-- endInclude -->
 
 
 ## NuGet
