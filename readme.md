@@ -1,7 +1,7 @@
 # <img src="/src/icon.png" height="30px"> Verify.Assertions
 
 [![Discussions](https://img.shields.io/badge/Verify-Discussions-yellow?svg=true&label=)](https://github.com/orgs/VerifyTests/discussions)
-[![Build status](https://ci.appveyor.com/api/projects/status/6stx39bhogfbgnpi?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-Assertions)
+[![Build status](https://img.shields.io/appveyor/build/SimonCropp/Verify-Assertions)](https://ci.appveyor.com/project/SimonCropp/Verify-Assertions)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.Assertions.svg)](https://www.nuget.org/packages/Verify.Assertions/)
 
 Extends [Verify](https://github.com/VerifyTests/Verify) to allow assertion callbacks. This enables using assertion libraries to interrogate during serialization. The primary use case for this is when the data structures being verified are either complex or large.<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
